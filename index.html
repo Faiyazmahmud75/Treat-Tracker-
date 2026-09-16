@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treat Tracker — The 8-Match Kacchi Debt</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+        
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: #ffffff;
+            color: #1a1a1a;
+            scroll-behavior: smooth;
+        }
+
+        /* Full Screen Slider */
+        .hero-slider {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out, transform 10s linear;
+            background-size: cover;
+            background-position: center;
+            transform: scale(1);
+        }
+
+        .slide.active { 
+            opacity: 1; 
+            transform: scale(1.1);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.5), #ffffff);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 1.5rem;
+        }
+
+        /* UI Elements */
+        .glass-card {
+            background: #ffffff;
+            border: 1px solid #f1f1f1;
+            box-shadow: 0 4px 20px -5px rgba(0,0,0,0.05);
+        }
+
+        .progress-block {
+            height: 6px;
+            border-radius: 10px;
+            background: #f1f1f1;
+            display: flex;
+            gap: 4px;
+        }
+
+        .block-segment {
+            flex: 1;
+            height: 100%;
+            border-radius: 4px;
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .block-segment.active { background: #f59e0b; }
+
+        /* Hide Scrollbar */
+        ::-webkit-scrollbar { width: 0px; background: transparent; }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0) translateX(-50%);}
+            40% {transform: translateY(-10px) translateX(-50%);}
+            60% {transform: translateY(-5px) translateX(-50%);}
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Hero Section -->
+    <header class="hero-slider">
+        <div id="slider">
+            <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=2000')"></div>
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1633945274405-b6c8069047b0?q=80&w=2000')"></div>
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1522778119026-d647f0596c20?q=80&w=2000')"></div>
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1589302168068-964664d93dc0?q=80&w=2000')"></div>
+        </div>
+        
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/20 backdrop-blur-md border border-white/20 text-white text-[10px] font-bold uppercase tracking-[0.2em] mb-6">
+                ⚽ FIFA World Cup 2026 Legacy
+            </div>
+            <h1 class="text-5xl md:text-8xl font-black tracking-tighter text-white mb-6 leading-none">
+                TREAT <br class="md:hidden"> TRACKER
+            </h1>
+            <p class="text-white/80 text-sm md:text-lg max-w-xl mx-auto leading-relaxed font-medium mb-10">
+                Argentina fell in the final, and now honor must be served. <span class="text-white font-bold underline decoration-orange-500">Sajib Hasnat</span> is treating <span class="text-white font-bold underline decoration-orange-500">Faiyaz Toha</span> for the trophy. The scoreboard is live, the plates are counted, and the debt must be settled one match at a time.
+            </p>
+            
+            <div class="flex flex-col md:flex-row items-center gap-8 bg-white/10 backdrop-blur-xl p-6 rounded-[2rem] border border-white/10">
+                <div class="flex items-center gap-4">
+                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Toha" class="w-12 h-12 rounded-full bg-white/20 border-2 border-orange-500">
+                    <div class="text-left">
+                        <p class="text-[10px] font-bold text-orange-400 uppercase tracking-widest">The Winner</p>
+                        <p class="text-white font-bold">Faiyaz Toha</p>
+                    </div>
+                </div>
+                <div class="hidden md:block w-px h-10 bg-white/20"></div>
+                <div class="flex items-center gap-4">
+                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Sajib" class="w-12 h-12 rounded-full bg-white/20 border-2 border-gray-500">
+                    <div class="text-left">
+                        <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">The Giver</p>
+                        <p class="text-white font-bold">Sajib Hasnat</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <a href="#dashboard" class="scroll-indicator text-white text-2xl">
+            <i class="fa fa-chevron-down"></i>
+        </a>
+    </header>
+
+    <!-- Main Content -->
+    <main id="dashboard" class="max-w-5xl mx-auto px-6 py-20 space-y-20">
+        
+        <!-- Stats Section -->
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="glass-card p-8 rounded-[2.5rem] relative overflow-hidden">
+                <p class="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 mb-2">Completion</p>
+                <div class="flex items-baseline gap-2">
+                    <h3 id="progress-percent" class="text-5xl font-black tracking-tighter">25%</h3>
+                    <span class="text-orange-500 font-bold">Finished</span>
+                </div>
+                <div class="progress-block mt-6" id="progress-bar-container"></div>
+            </div>
+
+            <div class="glass-card p-8 rounded-[2.5rem] flex flex-col justify-center border-orange-100 bg-orange-50/30">
+                <p class="text-[10px] font-black uppercase tracking-[0.2em] text-orange-400 mb-2">Status</p>
+                <h3 id="progress-count" class="text-3xl font-black tracking-tight italic">2 / 8 PLATES</h3>
+            </div>
+
+            <div class="glass-card p-8 rounded-[2.5rem] flex flex-col justify-center bg-gray-900 text-white">
+                <p class="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500 mb-2">Remaining</p>
+                <h3 id="remaining-count" class="text-3xl font-black tracking-tight">6 TO GO</h3>
+            </div>
+        </section>
+
+        <!-- Dynamic Form (Update/Claim) -->
+        <section id="update-section" class="hidden">
+            <div class="bg-white border-2 border-black rounded-[3rem] p-8 md:p-12 shadow-[15px_15px_0px_0px_rgba(0,0,0,1)]">
+                <div class="flex justify-between items-start mb-10">
+                    <h3 class="text-4xl font-black tracking-tighter italic uppercase">LOG KACCHI #<span id="target-kacchi-num"></span></h3>
+                    <button onclick="toggleUpdateForm()" class="text-gray-400 hover:text-black transition-colors"><i class="fa fa-times text-2xl"></i></button>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <div class="space-y-3">
+                        <label class="text-xs font-black uppercase tracking-widest text-gray-400">When did it happen?</label>
+                        <input type="date" id="input-date" class="w-full bg-gray-50 border-none p-5 rounded-2xl focus:ring-2 ring-orange-500 transition-all font-bold">
+                    </div>
+                    <div class="space-y-3">
+                        <label class="text-xs font-black uppercase tracking-widest text-gray-400">Where was the feast?</label>
+                        <input type="text" id="input-occasion" placeholder="Restaurant Name" class="w-full bg-gray-50 border-none p-5 rounded-2xl focus:ring-2 ring-orange-500 transition-all font-bold">
+                    </div>
+                    <div class="md:col-span-2 space-y-3">
+                        <label class="text-xs font-black uppercase tracking-widest text-gray-400">The Memory Note</label>
+                        <textarea id="input-memory" rows="3" placeholder="How was the meat? How was the rice? Tell the story..." class="w-full bg-gray-50 border-none p-5 rounded-2xl focus:ring-2 ring-orange-500 transition-all font-bold"></textarea>
+                    </div>
+                    <div class="md:col-span-2 space-y-3">
+                        <label class="text-xs font-black uppercase tracking-widest text-gray-400">Share Memories (Upload Photo)</label>
+                        <div class="relative group border-2 border-dashed border-gray-200 rounded-[2rem] p-10 text-center hover:bg-gray-50 transition-all cursor-pointer">
+                            <input type="file" id="input-photo" accept="image/*" class="absolute inset-0 opacity-0 cursor-pointer">
+                            <i class="fa fa-camera text-3xl text-gray-300 mb-4 group-hover:text-orange-500 transition-colors"></i>
+                            <p class="text-sm font-bold text-gray-400">Tap to upload a photo of the plate</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-12 flex flex-wrap gap-4">
+                    <button onclick="saveKacchi()" class="flex-1 md:flex-none bg-orange-500 text-white px-12 py-5 rounded-2xl font-black uppercase tracking-widest hover:bg-black transition-all transform hover:-translate-y-0.5">Save Kacchi</button>
+                    <button onclick="toggleUpdateForm()" class="flex-1 md:flex-none bg-gray-100 text-gray-500 px-12 py-5 rounded-2xl font-black uppercase tracking-widest">Cancel</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline -->
+        <section class="space-y-10">
+            <div class="flex items-center justify-between">
+                <h2 class="text-3xl font-black tracking-tighter uppercase italic">The Kacchi Logs</h2>
+                <button onclick="resetData()" class="text-[10px] font-bold text-gray-300 hover:text-red-500 uppercase tracking-widest">Reset All Progress</button>
+            </div>
+            
+            <div id="kacchi-list" class="grid grid-cols-1 gap-6">
+                <!-- Data via JS -->
+            </div>
+        </section>
+
+        <!-- Final Message -->
+        <section id="final-mission" class="hidden text-center py-32 bg-orange-500 text-white rounded-[4rem] shadow-2xl relative overflow-hidden">
+            <div class="relative z-10 px-6">
+                <div class="text-7xl mb-8">👑</div>
+                <h2 class="text-6xl md:text-8xl font-black mb-6 tracking-tighter italic leading-none">MISSION:<br>COMPLETE</h2>
+                <p class="text-white/80 max-w-md mx-auto font-bold text-lg italic">"The 8-match debt has been settled. Sajib is free, Toha is full. Long live the fans."</p>
+                <div class="mt-12 flex justify-center flex-wrap gap-4">
+                   <div class="px-8 py-3 bg-black/20 rounded-full font-black uppercase tracking-widest text-xs">Final Destination Reached</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Hero Slider
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        function rotateSlides() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+        setInterval(rotateSlides, 5000);
+
+        // Data Management
+        let kacchiData = [
+            { id: 1, completed: true, date: '2026-08-14', occasion: 'Spider-Man Show', memory: 'First Kacchi of the journey.', photo: null },
+            { id: 2, completed: true, date: '2026-09-08', occasion: 'Cattle Bangla', memory: 'Second Kacchi unlocked. 6 more to go.', photo: null },
+            { id: 3, completed: false, date: '', occasion: '', memory: '', photo: null },
+            { id: 4, completed: false, date: '', occasion: '', memory: '', photo: null },
+            { id: 5, completed: false, date: '', occasion: '', memory: '', photo: null },
+            { id: 6, completed: false, date: '', occasion: '', memory: '', photo: null },
+            { id: 7, completed: false, date: '', occasion: '', memory: '', photo: null },
+            { id: 8, completed: false, date: '', occasion: '', memory: '', photo: null },
+        ];
+
+        function init() {
+            const saved = localStorage.getItem('kacchi_v3_data');
+            if (saved) kacchiData = JSON.parse(saved);
+            render();
+        }
+
+        function render() {
+            const completedCount = kacchiData.filter(k => k.completed).length;
+            const progressPercent = Math.round((completedCount / 8) * 100);
+            
+            document.getElementById('progress-count').innerText = `${completedCount} / 8 PLATES`;
+            document.getElementById('progress-percent').innerText = `${progressPercent}%`;
+            document.getElementById('remaining-count').innerText = `${8 - completedCount} TO GO`;
+
+            // Progress Bar
+            const barContainer = document.getElementById('progress-bar-container');
+            barContainer.innerHTML = '';
+            for(let i=0; i<8; i++) {
+                const block = document.createElement('div');
+                block.className = `block-segment ${i < completedCount ? 'active' : 'bg-gray-100'}`;
+                barContainer.appendChild(block);
+            }
+
+            // Timeline List
+            const listContainer = document.getElementById('kacchi-list');
+            listContainer.innerHTML = '';
+            kacchiData.forEach(k => {
+                const item = document.createElement('div');
+                item.className = `glass-card p-6 md:p-10 rounded-[2.5rem] flex flex-col md:flex-row items-center gap-8 transition-all ${!k.completed ? 'opacity-40 grayscale pointer-events-none' : ''}`;
+
+                let content = `
+                    <div class="flex-1 flex flex-col md:flex-row items-center gap-8 w-full text-center md:text-left">
+                        <div class="w-20 h-20 rounded-3xl ${k.completed ? 'bg-black text-white' : 'bg-gray-100 text-gray-300'} flex items-center justify-center font-black text-3xl shrink-0">
+                            ${k.completed ? '✓' : k.id}
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <h3 class="text-2xl font-black tracking-tight italic uppercase truncate">${k.completed ? k.occasion : 'LOCKED PLATE'}</h3>
+                            <p class="text-xs font-black text-orange-500 uppercase tracking-widest mt-1">${k.completed ? k.date : 'Milestone #'+k.id}</p>
+                            ${k.memory ? `<p class="mt-4 text-gray-500 font-medium leading-relaxed italic">"${k.memory}"</p>` : ''}
+                        </div>
+                    </div>
+                `;
+
+                if (k.photo && k.completed) {
+                    content += `<div class="shrink-0 w-full md:w-32 h-32 rounded-3xl overflow-hidden shadow-xl"><img src="${k.photo}" class="w-full h-full object-cover"></div>`;
+                }
+
+                // Interaction Buttons
+                let buttons = '';
+                if (k.completed) {
+                    buttons = `<button onclick="openForm(${k.id})" class="text-[10px] font-black uppercase tracking-widest text-gray-400 hover:text-black mt-4 md:mt-0 px-4 py-2 bg-gray-50 rounded-full transition-colors">Edit Log</button>`;
+                } else if (!k.completed && (k.id === 1 || kacchiData[k.id-2].completed)) {
+                    item.className = "glass-card p-10 rounded-[2.5rem] flex flex-col md:flex-row items-center gap-8 bg-orange-50 border-2 border-dashed border-orange-200 animate-pulse";
+                    item.style.opacity = "1";
+                    item.style.pointerEvents = "auto";
+                    buttons = `<button onclick="openForm(${k.id})" class="w-full md:w-auto bg-black text-white px-10 py-4 rounded-2xl font-black uppercase tracking-widest hover:bg-orange-500 transition-all transform hover:-translate-y-0.5">Claim Plate</button>`;
+                }
+
+                item.innerHTML = content + buttons;
+                listContainer.appendChild(item);
+            });
+
+            if (completedCount === 8) {
+                document.getElementById('final-mission').classList.remove('hidden');
+            } else {
+                document.getElementById('final-mission').classList.add('hidden');
+            }
+
+            localStorage.setItem('kacchi_v3_data', JSON.stringify(kacchiData));
+        }
+
+        let currentEditingId = null;
+        function openForm(id) {
+            currentEditingId = id;
+            const existing = kacchiData.find(k => k.id === id);
+            document.getElementById('target-kacchi-num').innerText = id;
+            document.getElementById('update-section').classList.remove('hidden');
+            
+            // Populate existing data for editing
+            document.getElementById('input-date').value = existing.date || new Date().toISOString().split('T')[0];
+            document.getElementById('input-occasion').value = existing.occasion || '';
+            document.getElementById('input-memory').value = existing.memory || '';
+            
+            window.scrollTo({ top: document.getElementById('update-section').offsetTop - 50, behavior: 'smooth' });
+        }
+
+        function toggleUpdateForm() { document.getElementById('update-section').classList.add('hidden'); }
+
+        function saveKacchi() {
+            const date = document.getElementById('input-date').value;
+            const occasion = document.getElementById('input-occasion').value;
+            const memory = document.getElementById('input-memory').value;
+            const photoFile = document.getElementById('input-photo').files[0];
+
+            if(!date || !occasion) return alert("Missing Date or Restaurant!");
+
+            const updateRecord = (photoBase64) => {
+                const index = kacchiData.findIndex(k => k.id === currentEditingId);
+                kacchiData[index] = { 
+                    ...kacchiData[index],
+                    completed: true, 
+                    date, 
+                    occasion, 
+                    memory, 
+                    photo: photoBase64 || kacchiData[index].photo 
+                };
+                toggleUpdateForm();
+                render();
+            };
+
+            if (photoFile) {
+                const reader = new FileReader();
+                reader.onloadend = () => updateRecord(reader.result);
+                reader.readAsDataURL(photoFile);
+            } else {
+                updateRecord(null);
+            }
+        }
+
+        function resetData() {
+            if(confirm("Permanently wipe all progress and start over?")) {
+                localStorage.removeItem('kacchi_v3_data');
+                location.reload();
+            }
+        }
+
+        init();
+    </script>
+</body>
+</html>
