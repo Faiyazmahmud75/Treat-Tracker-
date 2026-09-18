@@ -5,8 +5,8 @@ export const uploadImage = async (file) => {
   // get your cloud name, and create an "unsigned upload preset" in the settings.
   
   // Using the provided cloud name. Make sure you have created an unsigned upload preset!
-  const CLOUD_NAME = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME; 
-  const UPLOAD_PRESET = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
+  const CLOUD_NAME = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME || "apevrwxd"; 
+  const UPLOAD_PRESET = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET || "Treat Images";
 
   const formData = new FormData();
   formData.append("file", file);

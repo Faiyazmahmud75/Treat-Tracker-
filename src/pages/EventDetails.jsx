@@ -35,7 +35,7 @@ import {
 
 export default function EventDetails() {
   const { eventId } = useParams();
-  const { currentUser } = useAuth();
+  const { currentUser, loginWithGoogle } = useAuth();
   const navigate = useNavigate();
 
   const [event, setEvent] = useState(null);
@@ -327,10 +327,6 @@ export default function EventDetails() {
     }
   };
 
-  if (!currentUser) {
-    return <Navigate to="/" />;
-  }
-
   if (loading) {
     return (
       <div className="min-h-screen bg-[#0a0a0a] text-white flex flex-col items-center justify-center">
@@ -346,8 +342,8 @@ export default function EventDetails() {
         <AlertCircle size={48} className="text-orange-500 mb-4" />
         <h2 className="text-3xl font-black uppercase italic tracking-tight mb-2">Event Not Found</h2>
         <p className="text-gray-400 text-sm mb-6">This treat event does not exist or has been removed.</p>
-        <Link to="/dashboard" className="px-6 py-3 rounded-2xl bg-orange-500 text-white font-bold text-xs uppercase tracking-wider">
-          Return to Dashboard
+        <Link to={currentUser ? "/dashboard" : "/"} className="px-6 py-3 rounded-2xl bg-orange-500 text-white font-bold text-xs uppercase tracking-wider">
+          {currentUser ? "Return to Dashboard" : "Return to Home"}
         </Link>
       </div>
     );
@@ -399,10 +395,10 @@ export default function EventDetails() {
           {/* Top Breadcrumb & Status */}
           <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
             <Link
-              to="/dashboard"
+              to={currentUser ? "/dashboard" : "/"}
               className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-gray-300 hover:text-white text-xs font-bold uppercase tracking-wider backdrop-blur-md transition-all cursor-pointer shadow-md"
             >
-              <ArrowLeft size={14} /> Back to Dashboard
+              <ArrowLeft size={14} /> {currentUser ? "Back to Dashboard" : "Back to Home"}
             </Link>
 
             {isSettled ? (
@@ -508,6 +504,17 @@ export default function EventDetails() {
             </div>
 
             {/* Action Buttons */}
+            {!currentUser && (
+              <div className="flex items-center gap-3">
+                <button
+                  onClick={loginWithGoogle}
+                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-black text-xs uppercase tracking-widest transition-all shadow-[0_0_30px_rgba(249,115,22,0.4)] cursor-pointer active:scale-95"
+                >
+                  <Trophy size={16} /> Sign In to Join Showdowns
+                </button>
+              </div>
+            )}
+
             {isWinner && (
               <div className="flex flex-wrap items-center gap-3">
                 {!isSettled && (

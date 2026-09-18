@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default function Logo({ size = 'md', showText = true, className = '', to = '/' }) {
+export default function Logo({ size = 'responsive', showText = true, className = '', to = '/' }) {
   const sizeMap = {
     xs: {
       img: 'w-6 h-6',
@@ -9,9 +9,14 @@ export default function Logo({ size = 'md', showText = true, className = '', to 
       badge: 'text-[8px] px-1 py-0.2'
     },
     sm: {
-      img: 'w-8 h-8',
-      title: 'text-lg',
-      badge: 'text-[9px] px-1.5 py-0.5'
+      img: 'w-7 h-7 sm:w-8 sm:h-8',
+      title: 'text-base sm:text-lg',
+      badge: 'text-[8px] sm:text-[9px] px-1.5 py-0.5'
+    },
+    responsive: {
+      img: 'w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10',
+      title: 'text-base sm:text-lg md:text-xl',
+      badge: 'text-[8px] sm:text-[9px] md:text-[10px] px-1.5 py-0.5'
     },
     md: {
       img: 'w-10 h-10',
@@ -25,7 +30,7 @@ export default function Logo({ size = 'md', showText = true, className = '', to 
     }
   };
 
-  const currentSize = sizeMap[size] || sizeMap.md;
+  const currentSize = sizeMap[size] || sizeMap.responsive;
 
   const content = (
     <div className={`inline-flex items-center gap-2.5 group select-none ${className}`}>
